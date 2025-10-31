@@ -46,7 +46,7 @@ const NavBar: React.FC<NavBarProps> = ({
           <div className="flex justify-between items-center">
             <div className="flex items-center">
               <img
-                src="/HD Booking.png"
+                src="/hd-booking.png"
                 alt="HD Booking"
                 className="h-10 w-auto"
                 onError={(e) => {
@@ -85,7 +85,7 @@ const NavBar: React.FC<NavBarProps> = ({
         <div className="hidden md:flex justify-between items-center">
           <div className="flex items-center">
             <img
-              src="/HD Booking.png"
+              src="/hd-booking.png"
               alt="HD Booking"
               className="h-10 w-auto"
               onError={(e) => {

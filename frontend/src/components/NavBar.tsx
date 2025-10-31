@@ -49,7 +49,9 @@ const NavBar: React.FC<NavBarProps> = ({
                 src="/hd-booking.png"
                 alt="HD Booking"
                 className="h-10 w-auto"
+                onLoad={() => console.log('Logo loaded successfully')}
                 onError={(e) => {
+                  console.log('Logo failed to load, falling back to text');
                   const target = e.currentTarget as HTMLImageElement;
                   target.style.display = 'none';
                   const fallback = target.nextElementSibling as HTMLElement;
@@ -88,7 +90,9 @@ const NavBar: React.FC<NavBarProps> = ({
               src="/hd-booking.png"
               alt="HD Booking"
               className="h-10 w-auto"
+              onLoad={() => console.log('Desktop logo loaded successfully')}
               onError={(e) => {
+                console.log('Desktop logo failed to load, falling back to text');
                 const target = e.currentTarget as HTMLImageElement;
                 target.style.display = 'none';
                 const fallback = target.nextElementSibling as HTMLElement;

@@ -8,19 +8,18 @@ import bookingRoutes from "./routes/bookingRoutes.js";
 
 dotenv.config();
 const app = express();
-app.use(cors());
+
+// CORS configuration - allow all origins for deployed backend
+app.use(cors({
+  origin: true, // Allow all origins
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 // connection with mongodb
 connectDB();
-
-app.use(
-  cors({
-    origin: ["http://localhost:3000"], 
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
 
 // Routes
 app.use("/api/experiences", experienceRoutes);

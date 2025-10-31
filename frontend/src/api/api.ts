@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = axios.create({
-    baseURL: "https://travel-website-7vcf.onrender.com",
+    baseURL: "https://travel-website-7vcf.onrender.com/api",
 });
 
 export default api;

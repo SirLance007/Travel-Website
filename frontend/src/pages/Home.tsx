@@ -105,11 +105,11 @@ const Home: React.FC = () => {
         searchQuery={searchQuery}
         onSearchChange={handleSearchChange}
       />
-      <main className="max-w-6xl mx-auto px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
         {/* Search Results Info */}
         {searchQuery && (
-          <div className="mb-6">
-            <p className="text-gray-600">
+          <div className="mb-4 sm:mb-6">
+            <p className="text-gray-600 text-sm sm:text-base">
               {filteredExperiences.length > 0 
                 ? `Found ${filteredExperiences.length} experience${filteredExperiences.length !== 1 ? 's' : ''} for "${searchQuery}"`
                 : `No experiences found for "${searchQuery}"`
@@ -118,7 +118,7 @@ const Home: React.FC = () => {
             {filteredExperiences.length === 0 && (
               <button 
                 onClick={() => handleSearchChange('')}
-                className="text-yellow-600 hover:text-yellow-700 underline mt-2"
+                className="text-yellow-600 hover:text-yellow-700 underline mt-2 text-sm sm:text-base"
               >
                 Clear search to see all experiences
               </button>
@@ -126,7 +126,7 @@ const Home: React.FC = () => {
           </div>
         )}
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-4 justify-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 mt-4 justify-items-center">
           {filteredExperiences.map((experience) => (
             <ExperienceCard key={experience._id} experience={experience} />
           ))}
@@ -134,8 +134,8 @@ const Home: React.FC = () => {
         
         {/* No results message */}
         {filteredExperiences.length === 0 && !searchQuery && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No experiences available</p>
+          <div className="text-center py-8 sm:py-12">
+            <p className="text-gray-500 text-base sm:text-lg">No experiences available</p>
           </div>
         )}
       </main>

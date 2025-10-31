@@ -127,48 +127,51 @@ const ExperienceDetails: React.FC = () => {
       </div>
       
       <div className="bg-gray-100 min-h-screen">
-        <div className="max-w-7xl mx-auto p-6">
+        <div className="max-w-7xl mx-auto p-4 sm:p-6">
           {/* Header */}
-          <div className="flex items-center mb-6">
+          <div className="flex items-center mb-4 sm:mb-6">
             <button 
               onClick={handleBack}
               className="flex items-center text-gray-600 hover:text-gray-800 mr-4"
             >
-              <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
-              Details
+              <span className="text-sm sm:text-base">Details</span>
             </button>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
             {/* Left Column - Experience Details */}
             <div className="lg:col-span-2">
               {/* Experience Image */}
-              <div className=" mb-6">
+              <div className="relative mb-4 sm:mb-6">
                 <img 
                   src={experience.image} 
                   alt={experience.title}
-                  className="w-full h-80 object-cover rounded-2xl"
+                  className="w-full h-60 sm:h-80 object-cover rounded-xl sm:rounded-2xl"
                 />
+                <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 bg-yellow-400 text-black px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
+                  ₹{experience.price}
+                </div>
               </div>
 
               {/* Experience Title */}
-              <h1 className="text-3xl font-medium text-gray-800 mb-4">{experience.title}</h1>
-              <p className="text-gray-600 font-normal mb-6">{experience.description}</p>
+              <h1 className="text-2xl sm:text-3xl font-medium text-gray-800 mb-3 sm:mb-4">{experience.title}</h1>
+              <p className="text-gray-600 font-normal mb-4 sm:mb-6 text-sm sm:text-base">{experience.description}</p>
 
               {/* Choose Date */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold text-[#838383] mb-3">Choose date</h3>
-                <div className="flex gap-3">
+              <div className="mb-4 sm:mb-6">
+                <h3 className="text-base sm:text-lg font-semibold text-[#838383] mb-2 sm:mb-3">Choose date</h3>
+                <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2">
                   {dates.map((date) => (
                     <button
                       key={date.value}
                       onClick={() => setSelectedDate(date.value)}
-                      className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                      className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${
                         selectedDate === date.value
                           ? 'bg-yellow-400 text-black'
-                          : 'border border-[#BDBDBD]-800 text-gray-700 hover:bg-gray-300'
+                          : 'border border-[#BDBDBD] text-gray-700 hover:bg-gray-300'
                       }`}
                     >
                       {date.label}
@@ -178,15 +181,15 @@ const ExperienceDetails: React.FC = () => {
               </div>
 
               {/* Choose Time */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Choose time</h3>
-                <div className="flex gap-3">
+              <div className="mb-4 sm:mb-6">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-2 sm:mb-3">Choose time</h3>
+                <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2">
                   {times.map((time: TimeSlot) => (
                     <button
                       key={time.time}
                       onClick={() => time.available && setSelectedTime(time.time)}
                       disabled={!time.available}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0 ${
                         selectedTime === time.time
                           ? 'bg-yellow-400 text-black'
                           : time.available

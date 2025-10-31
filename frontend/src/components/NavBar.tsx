@@ -40,41 +40,83 @@ const NavBar: React.FC<NavBarProps> = ({
 
   return (
     <nav className="bg-gray-50 border-b border-gray-200 py-4">
-      <div className="max-w-6xl mx-auto flex justify-between items-center px-8">
-        <div className="flex items-center">
-          <img
-            src="/highway-delite-logo.png"
-            alt="Highway Delite"
-            className="h-10 w-auto"
-            onError={(e) => {
-              // Fallback to text logo if image fails to load
-              const target = e.currentTarget as HTMLImageElement;
-              target.style.display = 'none';
-              const fallback = target.nextElementSibling as HTMLElement;
-              if (fallback) fallback.classList.remove('hidden');
-            }}
-          />
-          <div className="bg-black text-white rounded-full w-10 h-10 flex flex-col justify-center items-center text-xs font-bold hidden">
-            <span className="leading-none">highway</span>
-            <span className="leading-none text-[0.5rem]">delite</span>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Mobile Layout */}
+        <div className="flex flex-col space-y-4 md:hidden">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center">
+              <img
+                src="/HD booking.png"
+                alt="HD Booking"
+                className="h-10 w-auto"
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement;
+                  target.style.display = 'none';
+                  const fallback = target.nextElementSibling as HTMLElement;
+                  if (fallback) fallback.classList.remove('hidden');
+                }}
+              />
+              <div className="bg-black text-white rounded-full w-8 h-8 flex flex-col justify-center items-center text-xs font-bold hidden">
+                <span className="leading-none text-[0.4rem]">highway</span>
+                <span className="leading-none text-[0.3rem]">delite</span>
+              </div>
+            </div>
+
+          </div>
+          <div className="flex gap-2">
+            <input
+              type="text"
+              placeholder="Search experiences"
+              value={currentQuery}
+              onChange={handleInputChange}
+              onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+              className="flex-1 px-3 py-2 border-2 border-yellow-400 rounded focus:border-yellow-500 focus:outline-none text-sm"
+            />
+            <button
+              onClick={handleSearch}
+              className="bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded font-medium transition-colors text-sm"
+            >
+              Search
+            </button>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
-          <input
-            type="text"
-            placeholder="Search experiences"
-            value={currentQuery}
-            onChange={handleInputChange}
-            onKeyPress={handleKeyPress}
-            className="px-4 py-2 border-2 border-yellow-400 rounded focus:border-yellow-500 focus:outline-none text-base w-80"
-          />
-          <button
-            onClick={handleSearch}
-            className="bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded font-medium transition-colors"
-          >
-            Search
-          </button>
+        {/* Desktop Layout */}
+        <div className="hidden md:flex justify-between items-center">
+          <div className="flex items-center">
+            <img
+              src="/HD booking.png"
+              alt="HD Booking"
+              className="h-10 w-auto"
+              onError={(e) => {
+                const target = e.currentTarget as HTMLImageElement;
+                target.style.display = 'none';
+                const fallback = target.nextElementSibling as HTMLElement;
+                if (fallback) fallback.classList.remove('hidden');
+              }}
+            />
+            <div className="bg-black text-white rounded-full w-10 h-10 flex flex-col justify-center items-center text-xs font-bold hidden">
+              <span className="leading-none">highway</span>
+              <span className="leading-none text-[0.5rem]">delite</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              placeholder="Search experiences"
+              value={currentQuery}
+              onChange={handleInputChange}
+              onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+              className="px-4 py-2 border-2 border-yellow-400 rounded focus:border-yellow-500 focus:outline-none text-base w-80"
+            />
+            <button
+              onClick={handleSearch}
+              className="bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded font-medium transition-colors"
+            >
+              Search
+            </button>
+          </div>
         </div>
       </div>
     </nav>
